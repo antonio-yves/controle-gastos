@@ -49,4 +49,7 @@ def valida_campos_incorretos(serializer, dados_da_requisicao):
             dados_incorretos['valor'] = 'O tipo de dado informado não corresponde ao tipo de dado esperado'
     if not valida_data(dados_da_requisicao['data']):
         dados_incorretos['data'] = 'A data deve estar no formato YYYY-MM-DD'
+    if 'categoria' in dados_da_requisicao:
+        if dados_da_requisicao['categoria'] not in ['A', 'S', 'M', 'T', 'E', 'L', 'I', 'O']:
+            dados_incorretos['categoria'] = 'A categoria informada não existe!'
     return dados_incorretos
